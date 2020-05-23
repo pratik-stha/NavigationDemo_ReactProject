@@ -1,11 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from './Screens/Profile';
+import EditScreen from './Screens/ProfileEdit';
+import {Button} from 'react-native-elements';
+
 
 export default function App() {
+
+  const Stack = createStackNavigator();
+
+  console.log('hello world');
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} options={{          title: 'Home',
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            color: 'blue',
+            textAlign: 'center',
+            alignSelf: 'center'
+          },}} />
+    
+      <Stack.Screen name="Edit" component={EditScreen} options={{ title:'Edit',headerStyle:{backgroundColor:'yellow'} ,headerTitleStyle:{color:'green',textAlign:'center', alignSelf: 'center'}}}/>
+    
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
